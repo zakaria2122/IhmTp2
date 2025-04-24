@@ -104,16 +104,24 @@ public class AppliConverter extends Application {
     private void ajouteBoutons(Pane root){
         HBox hbButtons = new HBox(3);
         hbButtons.setPadding(new Insets(10, 10, 10, 10));
+        Button buttonConvertCelcius = new Button ("Convertir °C ");
+        Button buttonConvertF = new Button ("Convertir F ");
+
         Button buttonReset = new Button("Reset");
         Button buttonQuitter = new Button("Quitter");
+       
         // On connecte des controleurs        
         buttonQuitter.setOnAction(new ControleurBoutonQuitter(this));
         buttonReset.setOnAction(new ControleurBoutonReset(this));
-        
-        hbButtons.getChildren().addAll(buttonReset, buttonQuitter);
+       buttonConvertCelcius.setOnAction(new ControleurConvertirCelcius(this.temperature, this));
+        buttonConvertF.setOnAction(new ControleurF(this.temperature, this));
+        hbButtons.getChildren().addAll(buttonReset, buttonQuitter,buttonConvertCelcius, buttonConvertF);
         hbButtons.setAlignment(Pos.BASELINE_RIGHT);
         root.getChildren().add(hbButtons);
     }
+    
+
+
 
     public static void main(String[] args) {
         launch(args);
