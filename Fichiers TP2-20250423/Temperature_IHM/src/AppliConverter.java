@@ -1,21 +1,19 @@
 import javafx.application.Application;
 import javafx.application.Platform;
-// import javafx.beans.binding.Bindings;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.*;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+
+import javafx.geometry.Insets;
 
 public class AppliConverter extends Application {
 
@@ -23,6 +21,7 @@ public class AppliConverter extends Application {
     protected TextField textFieldF ;
     private Temperature temperature;
 
+    
     @Override
     public void init(){
         // Initialisation des objects qui ne sont pas dans la scène

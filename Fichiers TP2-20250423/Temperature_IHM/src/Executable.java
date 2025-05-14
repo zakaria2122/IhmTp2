@@ -20,6 +20,7 @@ public class Executable {
                 quitte = true;
             }
         }
+        sc.close();
     }
 }
 

@@ -1,12 +1,24 @@
-# 1. D�finir le chemin vers JavaFX
-export pth=/usr/share/openjfx/lib/
+#!/bin/bash
 
+# Nom du script : script.sh
+# Description : Script pour compiler et exécuter une application JavaFX
+# Auteur : Zkr
 
-# 3. Compiler : les .class vont dans bin/
-javac  --module-path $pth --add-modules javafx.controls -d bin src/*.java
+# Répertoire vers les fichiers jar JavaFX
+PATH_TO_FX=/home/zkr/Téléchargements/javafx-sdk-24.0.1/lib
 
-# 4. G�n�rer la javadoc
-javadoc -d doc --module-path $pth --add-modules javafx.controls src/*.java
+# Compilation des fichiers Java
+mkdir -p out
 
+javac --module-path "$PATH_TO_FX" --add-modules javafx.controls,javafx.fxml \
+      -d out $(find src -name "*.java")
 
-java -cp bin:img --module-path $pth --add-modules javafx.controls AppliConverter
+# Vérifie que la compilation s'est bien passée
+if [ $? -ne 0 ]; then
+    echo "❌ Échec de la compilation"
+    exit 1
+fi
+
+# Lancement de l'application
+java --module-path "$PATH_TO_FX" --add-modules javafx.controls,javafx.fxml \
+     -cp out AppliConverter
